@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: ""}) %>
+
+    <div class="container w-full mx-auto px-4">
+      <div class="grid grid-cols-1 mb-4">
+        <div class="border-2 p-4 text-2xl text-center">
+          <strong><%- set.name %></strong>
+        </div>
+        <p>
+          <strong
+            >Below, you will find detailed information about the set:</strong
+          >
+          <%- set.name %>
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="border-2">
+          <img
+            src="<%- set.img_url %>"
+            alt="Lego set image"
+            class="w-full h-auto"
+          />
+        </div>
+
+        <div class="border-2 p-4">
+          <p class="text-lg">
+            <strong>Set Name:</strong> <%- set.name %> <br />
+            <strong>Year Released:</strong> <%- set.year %> <br />
+            <strong>Theme:</strong> <%- set.theme %> <br />
+            <strong>Number of Parts:</strong> <%- set.num_parts %>
+            <br />
+            <br />
+          </p>
+          <p id="quoteHere"></p>
+          <p id="quoteAuthorHere"></p>
+          <br />
+          <br />
+          <a
+            class="btn btn-primary btn-sm"
+            href="#"
+            onclick="history.back(); return false;"
+            >RETURN</a
+          >
+        </div>
+      </div>
+    </div>
+
+    <script>
+      document.addEventListener("DOMContentLoaded", () => {
+        /* TODO: "fetch" the data at: https://quotable.io/random and update an element in the DOM with
+the "content" and "author" */
+        fetch("https://quotable.io/random")
+          .then((response) => {
+            return response.json();
+          })
+          .then((json) => {
+            document.getElementById(
+              "quoteHere"
+            ).textContent = `"${json.content}"`;
+            document.getElementById(
+              "quoteAuthorHere"
+            ).textContent = `- ${json.author}`;
+          });
+      });
+    </script>
+  </body>
+</html>
