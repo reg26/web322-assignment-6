@@ -101,15 +101,14 @@
                     </div>
                   </div>
                 </td>
-                <td style="font-size: 1.1rem; padding: 12px">
-                  <%= set.name %>
-                </td>
+                <td style="font-size: 1.1rem; padding: 12px"><%= set.name%></td>
                 <td style="font-size: 1.1rem; padding: 12px">
                   <a
-                    href="/lego/sets?theme=<%= set.theme.toLowerCase() %>"
+                    href="/lego/sets?theme=<%= set.Theme.name.toLowerCase() %>"
                     class="btn"
                     style="color: blue"
-                    ><%= set.theme %></a
+                  >
+                    <%= set.Theme.name %></a
                   >
                 </td>
                 <td style="font-size: 1.1rem; padding: 12px">

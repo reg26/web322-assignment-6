@@ -34,13 +34,23 @@
           <p class="text-lg">
             <strong>Set Name:</strong> <%- set.name %> <br />
             <strong>Year Released:</strong> <%- set.year %> <br />
-            <strong>Theme:</strong> <%- set.theme %> <br />
+            <strong>Theme:</strong> <%- set.Theme.name %> <br />
             <strong>Number of Parts:</strong> <%- set.num_parts %>
             <br />
             <br />
           </p>
           <p id="quoteHere"></p>
           <p id="quoteAuthorHere"></p>
+          <br />
+          <br />
+          <a
+            href="/lego/editSet/<%=
+          set.set_num %>"
+            role="button"
+            class="btn"
+            >Edit</a
+          >
+
           <br />
           <br />
           <a

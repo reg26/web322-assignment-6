@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '' }) %>
+    <div class="hero bg-base-200 min-h-screen">
+      <div class="hero-content text-center">
+        <div class="max-w-md">
+          <h1 class="text-5xl font-bold">Edit Set: <%= set.name %></h1>
+          <form method="post" action="/lego/editSet">
+            Name<br />
+            <input
+              type="text"
+              value="<%= set.name %>"
+              name="name"
+              required
+            /><br /><br />
+
+            Year<br />
+            <input
+              type="number"
+              value="<%= set.year %>"
+              name="year"
+              required
+            /><br /><br />
+
+            Number of parts<br />
+            <input
+              type="number"
+              value="<%= set.num_parts %>"
+              name="num_parts"
+              required
+            /><br /><br />
+
+            Image url<br />
+            <input
+              type="url"
+              value="<%= set.img_url %>"
+              name="img_url"
+              id="url"
+              placeholder="https://cdn.rebrickable.com/media/sets/10132-1.jpg"
+              required
+            /><br /><br />
+
+            Theme name<br />
+            <select name="theme_id" size="3" required>
+                <% themes.forEach(theme => { %>
+                    <option <%= (set.theme_id === theme.id) ? "selected" : "" %> value="<%= theme.id %>"><%= theme.name %></option>
+                <% }); %>
+            </select>
+            <br /><br />
+
+            Set number<br />
+            <input type="text" name="set_num" readonly value="<%= set.set_num %>"/><br /><br />
+
+            <button type="submit">Update Set</button>
+            <br /><br />
+
+            <a
+            href="/lego/deleteSet/<%=
+          set.set_num %>"
+            role="button"
+            class="btn btn-error"
+            >Delete</a
+          >
+          </form>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
