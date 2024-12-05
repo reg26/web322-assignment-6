@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="/css/main.css" />
+  </head>
+  <body>
+    <%- include('partials/navbar', {page: '/userHistory' }) %>
+    <div class="hero bg-base-200 min-h-screen">
+      <div class="hero-content text-center">
+        <div class="max-w-2xl">
+          <h1 class="text-4xl font-bold mb-6"><%= session.user.userName %></h1>
+          <p>User history <%= session.user.email %></p>
+          <div class="overflow-x-auto">
+            <table class="table table-zebra">
+              <!-- head -->
+              <thead>
+                <tr>
+                  <th>Login Date/Time</th>
+                  <th>Client Information</th>
+                </tr>
+              </thead>
+              <tbody>
+                <% session.user.loginHistory.forEach((login) => {%>
+                <tr>
+                  <td><%= login.dateTime %></td>
+                  <td><%= login.userAgent %></td>
+                </tr>
+                <% })%>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

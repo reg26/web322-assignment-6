@@ -1,4 +1,5 @@
 require("dotenv").config();
+require("pg"); // explicitly require the "pg" module
 const Sequelize = require("sequelize");
 
 // set up sequelize to point to our postgres database
